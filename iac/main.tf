@@ -7,19 +7,18 @@ terraform {
   }
 }
 
-provider "docker" {
+provider "docker" {}
   # Start a container
-  # resource "docker_container" "ubuntu" {
-  #   name  = "foo"
-  #   image = docker_image.ubuntu.image_id
-  # }
+  resource "docker_container" "web_server" {
+    name  = "web_server_01"
+    image = docker_image.nginx.image_id
+  }
 
   # Find the latest Ubuntu precise image.
-  resource "docker_image" "ubuntu" {
-    name = "ubuntu:precise"
+  resource "docker_image" "nginx" {
+    name = "nginx:latest"
   }
 
-  output "image_id" {
-    value = docker_image.ubuntu.image_id
+  output "nginx_id" {
+    value = docker_image.nginx.image_id
   }
-}
