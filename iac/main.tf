@@ -12,6 +12,11 @@ provider "docker" {}
   resource "docker_container" "web_server" {
     name  = "web_server_01"
     image = docker_image.nginx.image_id
+
+    ports {
+      internal = 80
+      external = 4000
+    }
   }
 
   # Find the latest Ubuntu precise image.
