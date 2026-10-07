@@ -15,7 +15,7 @@ provider "docker" {}
 
     ports {
       internal = 80
-      external = 4000
+      external = 5000
     }
   }
 
